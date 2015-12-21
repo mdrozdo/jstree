@@ -1522,6 +1522,7 @@
 								tmp = {
 									id			: tid,
 									text		: d.text || '',
+									action		: d.action,
 									icon		: d.icon !== undefined ? d.icon : true,
 									parent		: p,
 									parents		: ps,
@@ -1630,6 +1631,7 @@
 							}
 							if(d && d.id) { tmp.id = d.id.toString(); }
 							if(d && d.text) { tmp.text = d.text; }
+							if(d && d.action) { tmp.action = d.action; }
 							if(d && d.data && d.data.jstree && d.data.jstree.icon) {
 								tmp.icon = d.data.jstree.icon;
 							}
@@ -1997,6 +1999,7 @@
 				tmp = {
 					id			: tid,
 					text		: d.text || '',
+					action		: d.action,
 					icon		: d.icon !== undefined ? d.icon : true,
 					parent		: p,
 					parents		: ps,
@@ -2096,6 +2099,7 @@
 			tmp = {
 				id			: false,
 				text		: typeof d === 'string' ? d : '',
+				action		: null,
 				icon		: typeof d === 'object' && d.icon !== undefined ? d.icon : true,
 				parent		: p,
 				parents		: ps,
@@ -2114,6 +2118,7 @@
 			}
 			if(d && d.id) { tmp.id = d.id.toString(); }
 			if(d && d.text) { tmp.text = d.text; }
+			if(d && d.action) { tmp.action = d.action; }
 			if(d && d.data && d.data.jstree && d.data.jstree.icon) {
 				tmp.icon = d.data.jstree.icon;
 			}
@@ -2295,7 +2300,8 @@
 				t = 0,
 				l = 0,
 				has_children = false,
-				last_sibling = false;
+				last_sibling = false,
+				a = false;
 			if(!obj) { return false; }
 			if(obj.id === $.jstree.root) {  return this.redraw(true); }
 			deep = deep || obj.children.length === 0;
@@ -2431,6 +2437,13 @@
 				node.childNodes[1].innerHTML += obj.text;
 			}
 
+			if(obj.action){
+				a = d.createElement('a');
+				a.setAttribute('href', obj.action.url);
+				a.className = 'jstree-action';
+				a.innerHTML = obj.action.text;
+				node.appendChild(a);
+			}
 
 			if(deep && obj.children.length && (obj.state.opened || force_render) && obj.state.loaded) {
 				k = d.createElement('UL');

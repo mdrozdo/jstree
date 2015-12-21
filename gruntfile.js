@@ -29,7 +29,7 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> - (<%= _.pluck(pkg.licenses, "type").join(", ") %>) */\n',
+        banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> - (<%= _.pluck(pkg.licenses, "type").join(", ") %>) mod mdrozdo (https://github.com/mdrozdo/jstree) */ \n',
         preserveComments: false,
         //sourceMap: "dist/jstree.min.map",
         //sourceMappingURL: "jstree.min.map",

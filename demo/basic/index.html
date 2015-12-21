@@ -44,7 +44,7 @@
 	<div id="evts" class="demo"></div>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="./../../dist/jstree.min.js"></script>
+	<script src="./../../dist/jstree.js"></script>
 	
 	<script>
 	// html demo
@@ -54,9 +54,15 @@
 	$('#data').jstree({
 		'core' : {
 			'data' : [
-				{ "text" : "Root node", "children" : [
-						{ "text" : "Child node 1" },
-						{ "text" : "Child node 2" }
+				{ "text" : "Root node",
+					"action" : {"text" : "Details", "url" : "http://google.com"},
+					"children" : [
+						{ "text" : "Child node 1", 
+							"action" : {"text" : "Details2", "url" : "http://google.com?q=test"},
+						},
+						{ "text" : "Child node 2",
+							"action" : {"text" : "Details3", "url" : "http://google.com?q=testtesettest"},
+						}
 				]}
 			]
 		}
